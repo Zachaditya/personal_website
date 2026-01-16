@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #4b5563;  /* subtle gray for secondary text */
+  --border: rgba(0, 0, 0, 0.10);
+}
+
+html, body {
+  height: 100%;
+  
+  
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Minimal “techy” details */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+@keyframes twBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Block cursor */
+.tw-cursor {
+  display: inline-block;
+  width: 0.62ch;    
+  height: 1.05em;
+  margin-left: 0.12ch;
+  background: currentColor;
+  vertical-align: -0.18em; /* aligns nicely with text */
+  animation: twBlink 1s steps(1, end) infinite;
+  opacity: 0.9;
+  border-radius: 2px; /* slightly softened like many typewriters */
+}
+/* Hover trigger */
+.projects-row:hover .proj-arrow {
+  animation: projArrow 1600ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+.projects-row:hover .trail-v {
+  animation: projTrailV 1600ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+.projects-row:hover .trail-h {
+  animation: projTrailH 1600ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+.projects-row:hover .proj-arrowlabel {
+  animation: projLabel 1600ms cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+}
+
+/* ===== TUNABLE DISTANCES ===== */
+:root {
+  --trail-down: 90px;   /* how far down */
+  --trail-right: 800px;  /* how far right */
+  --trail-x: 2px;      /* x position where trail starts */
+  --trail-y: 10px;      /* y position where trail starts */
+  --trail-thick: 2px;   /* line thickness */
+}
+
+/* Container large enough to hold the longer path + label */
+.proj-arrowwrap {
+  position: relative;
+  width: 130px;
+  height: 44px;
+  flex: 0 0 auto;
+}
+
+/* Trail segments (L-shaped) - REAL black line */
+.trail-v,
+.trail-h {
+  position: absolute;
+  background: #000;     /* true black */
+  opacity: 1;           /* no fading */
+  border-radius: 999px;
+}
+
+/* Vertical line grows downward */
+.trail-v {
+  left: var(--trail-x);
+  top: var(--trail-y);
+  width: var(--trail-thick);
+  height: 0px;
+}
+
+/* Horizontal line grows rightward from the bottom of vertical */
+.trail-h {
+  left: var(--trail-x);
+  top: calc(var(--trail-y) + var(--trail-down));
+  height: var(--trail-thick);
+  width: 0px;
+}
+
+/* Arrow */
+.proj-arrow {
+  position: absolute;
+  left: 0px;
+  top: 6px;
+  font-size: 18px;
+  transform-origin: 50% 50%;
+  transform: rotate(0deg) translate(0, 0);
+}
+
+/* Label appears after the arrow turns right */
+.proj-arrowlabel {
+  position: absolute;
+  left: calc(var(--trail-x) + var(--trail-right) + 10px);
+  top: calc(var(--trail-y) + var(--trail-down) - 7px);
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* Arrow motion: rotate down -> go down further -> turn right -> go right further */
+@keyframes projArrow {
+  0%   { transform: rotate(0deg) translate(0, 0); }
+  10%  { transform: rotate(90deg) translate(0, 0); } /* point down */
+  22%  { transform: rotate(90deg) translate(0,32px); } /* move down */
+  26%  { transform: rotate(0deg) translate(var(--trail-right), var(--trail-down)); } /* turn right */
+  100% { transform: rotate(0deg) translate(calc(var(--trail-right) + 8px), var(--trail-down)); }
+}
+
+/* Trail draw timing: vertical first, then horizontal */
+@keyframes projTrailV {
+  0%, 22% { height: 0px; }
+  52%     { height: var(--trail-down); }
+  100%    { height: var(--trail-down); }
+}
+@keyframes projTrailH {
+  0%, 52% { width: 0px; }
+  100%    { width: var(--trail-right); }
+}
+
+/* Label fades in near the end */
+@keyframes projLabel {
+  0%, 72% { opacity: 0; transform: translateX(-2px); }
+  100%    { opacity: 1; transform: translateX(0); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .projects-row:hover .proj-arrow,
+  .projects-row:hover .trail-v,
+  .projects-row:hover .trail-h,
+  .projects-row:hover .proj-arrowlabel {
+    animation: none !important;
+  }
+  .trail-v { height: var(--trail-down); }
+  .trail-h { width: var(--trail-right); }
+  .proj-arrow { transform: rotate(0deg) translate(calc(var(--trail-right) + 8px), var(--trail-down)); }
+  .proj-arrowlabel { opacity: 1; }
+}
+
+
