@@ -1,7 +1,9 @@
+"use client";
 import { ProjectsDropdownRow } from "./ProjectsDropdownRow";
 import { Section } from "./Section";
 import Link from "next/link";
 import Image from "next/image";
+import { useLayoutEffect, useRef, useState, useId, useEffect } from "react";
 
 type ResumeItem = {
   title: string;
@@ -112,21 +114,50 @@ function DropdownSection({
   titleClassName?: string;
   summaryClassName?: string;
 }) {
+  const [open, setOpen] = useState(defaultOpen);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+  const [maxH, setMaxH] = useState(0);
+  const contentId = useId();
+
+  // Measure content height when opening / when content changes
+  useLayoutEffect(() => {
+    if (!innerRef.current) return;
+    const h = innerRef.current.scrollHeight;
+    setMaxH(h);
+  }, [children, open]);
+
+  // Keep height correct on resize (fonts, responsive layout, etc.)
+  useEffect(() => {
+    const onResize = () => {
+      if (!innerRef.current) return;
+      setMaxH(innerRef.current.scrollHeight);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  const toggle = () => setOpen((v) => !v);
+
   return (
-    <details
-      open={defaultOpen}
-      className="group rounded-2xl border border-black/10 bg-white"
-    >
-      <summary
+    <div className="rounded-2xl border border-black/10 bg-white">
+      <button
+        type="button"
+        onClick={toggle}
+        aria-expanded={open}
+        aria-controls={contentId}
         className={[
-          "flex cursor-pointer list-none items-center gap-3 py-4 text-left",
-          // default padding
+          "flex w-full cursor-pointer items-center gap-3 py-4 text-left",
           "px-5",
           summaryClassName ?? "",
         ].join(" ")}
       >
         <span
-          className="inline-block select-none text-black/60 transition-transform duration-200 group-open:rotate-90"
+          className={[
+            "inline-block select-none text-black/60",
+            "transition-transform duration-400 ease-out",
+            open ? "rotate-90" : "",
+          ].join(" ")}
           aria-hidden="true"
         >
           ▸
@@ -140,14 +171,28 @@ function DropdownSection({
         >
           {title}
         </span>
-      </summary>
+      </button>
 
-      <div className="h-px bg-black/10" />
-      <div className="px-5 py-5 text-left">{children}</div>
-    </details>
+      {/* Animated content */}
+      <div
+        id={contentId}
+        ref={contentRef}
+        style={{ maxHeight: open ? maxH + 1 : 0 }} // +1 avoids 1px rounding snaps
+        className={[
+          "overflow-hidden",
+          "transition-[max-height,opacity,transform] duration-600",
+          "ease-[cubic-bezier(0.2,0.9,0.2,1)]",
+          open ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1",
+        ].join(" ")}
+      >
+        <div ref={innerRef}>
+          <div className="h-px bg-black/10" />
+          <div className="px-5 py-5 text-left">{children}</div>
+        </div>
+      </div>
+    </div>
   );
 }
-
 export function ResumeSection() {
   return (
     <Section
