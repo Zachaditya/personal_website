@@ -44,14 +44,14 @@ a:hover {
 /* Block cursor */
 .tw-cursor {
   display: inline-block;
-  width: 0.62ch;    
+  width: max(2px, 0.16ch);   /* was 0.62ch */
   height: 1.05em;
-  margin-left: 0.12ch;
+  margin-left: 0.08ch;       /* slightly tighter */
   background: currentColor;
-  vertical-align: -0.18em; /* aligns nicely with text */
+  vertical-align: -0.18em;
   animation: twBlink 1s steps(1, end) infinite;
   opacity: 0.9;
-  border-radius: 2px; /* slightly softened like many typewriters */
+  border-radius: 1px;        /* was 2px */
 }
 /* Hover trigger */
 .projects-row:hover .proj-arrow {
