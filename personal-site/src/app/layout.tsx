@@ -1,6 +1,11 @@
 // src/app/layout.tsx
 import "./globals.css";
 import PageTransition from "@/components/PageTransition";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "zachaditya",
+};
 
 export default function RootLayout({
   children,
