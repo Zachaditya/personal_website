@@ -14,7 +14,7 @@ export type Project = {
   export const PROJECTS: Project[] = [
     {
       slug: "hm-shop",
-      title: "HM-Shop — E-commerce Simulation + AI Shopping Assistant",
+      title: "HM-Shop: E-commerce Simulation + AI Shopping Assistant",
       date: "Jan 2026",
       tags: ["LLM", "AI", "Next.js", "TypeScript", "UI/UX", "FastAPI", "SQLite3"],
       short:
@@ -34,7 +34,7 @@ export type Project = {
   
     {
       slug: "internal-dacs-tool",
-      title: "Internal DACS Tool",
+      title: "Internal DACS Risk Managment Tool",
       date: "August 2025",
       tags: ["Quant", "Risk Analysis", "Financial Modelling", "Python", "Flask","Data Science/Visualization"],
       short:
