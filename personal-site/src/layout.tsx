@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Roboto_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 const ptMono = Roboto_Mono({
   weight: "400",
