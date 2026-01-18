@@ -19,14 +19,16 @@ export type Project = {
       tags: ["LLM", "AI", "Next.js", "TypeScript", "UI/UX", "FastAPI", "SQLite3"],
       short:
         "Built a modern Next.js storefront over an H&M dataset with search/filtering, product pages, cart, and a chatbot grounded in catalog context.",
-      overview:
-        "I built this project to simulate a modern e-commerce experience using a dataset of H&M products. "+
-        "The frontend is built with Next.js and TypeScript, featuring search and filtering capabilities, detailed product pages, and a shopping cart. The backend is powered by FastAPI and SQLite3 to manage product data and user interactions. A key feature is the AI shopping assistant"+
-        "which leverages a large language model to provide personalized recommendations and answer user queries based on the product catalog.",
+      overview: `This project simulates a full, end-to-end e-commerce experience using real product metadata from an H&M dataset. I built the frontend as a responsive storefront with Next.js App Router and TypeScript, focusing on clean UX patterns you’d expect in production: browsing by category, fast search, filters, product detail pages, and a cart experience that feels smooth and modern.
+  
+  On the backend, I used FastAPI with SQLite to serve product data through a set of REST endpoints. This keeps the system realistic: the frontend isn’t mock data—it fetches products, details, and similar items dynamically, like a real commerce stack.
+  
+  The standout feature is an AI shopping assistant embedded in the site. Instead of being a generic chatbot, it’s grounded in the actual catalog: the assistant receives relevant product context from the backend (based on the user’s query or browsing state) and uses that context to answer questions and recommend items without inventing products. If something isn’t present in the dataset (like sizing/fit), the assistant explicitly says it’s unavailable.`,
       highlights: [
-        "Search + filtering UX",
-        "Product detail pages + similar items",
-        "Chat assistant grounded to catalog context",
+        "Search + filtering UX (category browsing, fast search, filters)",
+        "Product detail pages + similar items (catalog-based recommendations)",
+        "Cart + checkout flow (add/remove/update quantities, responsive UI states)",
+        "AI shopping assistant grounded in catalog context (no hallucinated products)",
       ],
       repoUrl: "https://github.com/Zachaditya/eshop-hm_dataset",
       liveUrl: "https://…", // optional
