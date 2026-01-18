@@ -69,7 +69,7 @@ export type Project = {
         "Longer paragraph…",
       highlights: ["…"],
       repoUrl: "https://github.com/Zachaditya/playlist_recommender",
-      liveUrl: "https://…", // optional
+      liveUrl: "https://playlistrecommender-production.up.railway.app", // optional
 
     },
     {
