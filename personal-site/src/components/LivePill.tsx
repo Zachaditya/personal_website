@@ -7,10 +7,10 @@ export function LivePill({ href }: { href: string }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Open live demo"
-      className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-black/70 hover:bg-black/5 transition-colors"
+      className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white px-2.5 py-0.5 text-[11px] font-medium text-black/70 hover:bg-black/5 transition-colors"
     >
-      <span className="h-2 w-2 rounded-full bg-emerald-500" />
-      <span>Live demo</span>
+      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+      <span>Live</span>
     </Link>
   );
 }
