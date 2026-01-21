@@ -33,11 +33,11 @@ export type Project = {
       },
        {
         slug: "internal-dacs-tool",
-        title: "Internal DACS Risk Managment Tool",
+        title: "DACS Risk Managment and Visualization Tool",
         date: "August 2025",
         tags: ["Quant", "Risk Analysis", "Financial Modelling", "Python", "Flask","Data Science/Visualization"],
         short:
-          "An Internal tool used by Aetherum.ai to analyze portfolio risk to maintain optimal risk parameters for the user base",
+          "An visualization tool used to analyze portfolio risk to maintain optimal risk parameters for the user base",
         overview:
           "During my time at Aetherum.ai, I built the Digital Asset Credit Score. A credit scoring metric focused on analyzing user portfolios holistically to give Aetherum the most suitable loan terms. I created an internal tool for the team to use to keep track of the changing crypto market which is extremely volatile and tweak the financial model as the team see fit",
         highlights: [
