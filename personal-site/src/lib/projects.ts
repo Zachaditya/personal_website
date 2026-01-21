@@ -31,7 +31,7 @@ export type Project = {
         "AI shopping assistant grounded in catalog context (no hallucinated products)",
       ],
       repoUrl: "https://github.com/Zachaditya/eshop-hm_dataset",
-      liveUrl: "https://…", // optional
+      liveUrl: "https://eshop-hm-dataset.vercel.app", // optional
     },
   
     {
