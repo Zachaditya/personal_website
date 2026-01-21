@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { PROJECTS } from "@/lib/projects";
 
-/**
- * Supports:
- * - "YYYY-MM" (e.g. "2026-01")
- * - "YYYY-MM-DD" (e.g. "2025-12-15")
- * - "Jan 2026", "January 2026"
- * - "Aug 2025", "August 2025"
- */
 function parseProjectDate(input: string): Date | null {
   const s = (input ?? "").trim();
   if (!s) return null;
@@ -73,21 +66,23 @@ export default function ProjectsPage() {
                 p.highlights?.length ? "ring-1 ring-black/10" : "",
               ].join(" ")}
             >
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
                 <div className="text-xs text-black/60">
                   {formatDate(p.date)}
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2">
-                  {p.tags.map((t) => (
-                    <span
-                      key={`${p.slug}-${t}`}
-                      className="rounded-full border border-black/10 bg-white px-2.5 py-1 text-xs text-black/70"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                {p.liveUrl ? (
+                  <a
+                    href={p.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open live demo for ${p.title}`}
+                    className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-black/70 no-underline transition-colors hover:bg-black/5"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    Live demo
+                  </a>
+                ) : null}
               </div>
 
               <h2 className="mt-3 text-lg font-semibold tracking-tight text-black sm:text-xl">

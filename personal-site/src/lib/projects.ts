@@ -1,13 +1,13 @@
 export type Project = {
     slug: string;
     title: string;
-    date: string; // "2026-01" or "2025-12-15"
+    date: string; 
     tags: string[];
     short?: string;      // short description for project page
     overview?: string;   // longer description for project page
-    highlights: string[]; // bullet points for project page
-    repoUrl?: string;     // optional external link (demo/live)
-    liveUrl?: string;     // optional github link
+    highlights: string[];
+    repoUrl?: string;   
+    liveUrl?: string;   
 
   };
   
