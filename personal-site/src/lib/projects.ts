@@ -40,11 +40,12 @@ export type Project = {
           "An Internal tool used by Aetherum.ai to analyze portfolio risk to maintain optimal risk parameters for the user base",
         overview:
           "During my time at Aetherum.ai, I built the Digital Asset Credit Score. A credit scoring metric focused on analyzing user portfolios holistically to give Aetherum the most suitable loan terms. I created an internal tool for the team to use to keep track of the changing crypto market which is extremely volatile and tweak the financial model as the team see fit",
-        highlights: ["Wallet-level Digital Asset Credit Score (DACS) built from on-chain + market signals for underwriting",
+        highlights: [
+          "Wallet-level Digital Asset Credit Score (DACS) built from on-chain + market signals for underwriting",
      "Python scoring pipeline + API layer to serve real-time risk metrics to internal consumers",
      "Evaluation/backtesting harness (stress scenarios, threshold tuning, calibration) to validate reliability",
      "Internal dashboard for model introspection (drilldowns, explainability-style signals, audit-friendly outputs)",
-   "],
+   ],
         repoUrl: "https://github.com/Zachaditya/DACS_internal",
       },
        {
