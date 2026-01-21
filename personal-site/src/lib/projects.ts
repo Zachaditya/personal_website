@@ -12,7 +12,6 @@ export type Project = {
   };
   
   export const PROJECTS: Project[] = [
-    export const PROJECTS: Project[] = [
       {
         slug: "hm-shop",
         title: "HM-Shop: E-commerce Simulation + AI Shopping Assistant",
