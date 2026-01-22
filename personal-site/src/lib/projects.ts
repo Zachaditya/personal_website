@@ -7,11 +7,30 @@ export type Project = {
     overview?: string;   // longer description for project page
     highlights: string[];
     repoUrl?: string;   
+    wip?: boolean;
     liveUrl?: string;   
-
   };
   
   export const PROJECTS: Project[] = [
+      {
+        slug: "portfolio_recommender",
+        title: "Portfolio Recommender System",
+        date: "Jan 2026",
+        tags: ["LLM", "AI", "Next.js", "TypeScript", "UI/UX", "FastAPI", "SQLite3"],
+        short:
+          "Building a tailored portfolio recommendation system using LLMs to provide personalized investment suggestions based on user risk preferences and market data.",
+        overview: `Building a tailored portfolio recommendataion system based on user's answers to a set of survey questions to callibrate user's risk appetite and investment goals.
+        Portfolio recommendations take into account volatility spikes in different markets, institutional a`,
+        highlights: [
+          "Search + filtering UX (category browsing, fast search, filters)",
+          "Product detail pages + similar items (catalog-based recommendations)",
+          "Cart + checkout flow (add/remove/update quantities, responsive UI states)",
+          "AI shopping assistant grounded in catalog context (no hallucinated products)",
+        ],
+        repoUrl: "https://github.com/Zachaditya/eshop-hm_dataset",
+        wip: true,
+        liveUrl: "https://eshop-hm-dataset.vercel.app",
+      },
       {
         slug: "hm-shop",
         title: "HM-Shop: E-commerce Simulation + AI Shopping Assistant",

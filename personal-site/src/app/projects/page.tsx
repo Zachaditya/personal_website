@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PROJECTS } from "@/lib/projects";
+import { WipPill, LivePill } from "@/components/LivePill";
 
 function parseProjectDate(input: string): Date | null {
   const s = (input ?? "").trim();
@@ -70,19 +71,8 @@ export default function ProjectsPage() {
                 <div className="text-xs text-black/60">
                   {formatDate(p.date)}
                 </div>
-
-                {p.liveUrl ? (
-                  <a
-                    href={p.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Open live demo for ${p.title}`}
-                    className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-black/70 no-underline transition-colors hover:bg-black/5"
-                  >
-                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                    Live
-                  </a>
-                ) : null}
+                {p.liveUrl ? <LivePill href={p.liveUrl} /> : null}
+                {!p.liveUrl && p.wip ? <WipPill /> : null}
               </div>
 
               <h2 className="mt-3 text-lg font-semibold tracking-tight text-black sm:text-xl">
