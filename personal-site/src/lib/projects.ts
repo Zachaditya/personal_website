@@ -29,7 +29,7 @@ export type Project = {
         ],
         repoUrl: "https://github.com/Zachaditya/eshop-hm_dataset",
         wip: true,
-        liveUrl: "https://eshop-hm-dataset.vercel.app",
+
       },
       {
         slug: "hm-shop",
