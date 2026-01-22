@@ -65,7 +65,9 @@ export type Project = {
      "Evaluation/backtesting harness (stress scenarios, threshold tuning, calibration) to validate reliability",
      "Internal dashboard for model introspection (drilldowns, explainability-style signals, audit-friendly outputs)",
    ],
-        repoUrl: "https://github.com/Zachaditya/DACS_internal",
+        repoUrl: "https://github.com/Zachaditya/DACS_viz",
+        liveUrl: "https://dacsviz-production.up.railway.app",
+
       },
        {
      slug: "dacs",
