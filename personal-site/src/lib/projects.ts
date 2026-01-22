@@ -16,7 +16,7 @@ export type Project = {
         slug: "portfolio_recommender",
         title: "Portfolio Recommender System",
         date: "Jan 2026",
-        tags: ["LLM", "AI", "Next.js", "TypeScript", "UI/UX", "FastAPI", "SQLite3"],
+        tags: ["AI", "Financial Modelling", "Next.js", "TypeScript", "UI/UX", "FastAPI", "SQLite3"],
         short:
           "Building a tailored portfolio recommendation system using LLMs to provide personalized investment suggestions based on user risk preferences and market data.",
         overview: `Building a tailored portfolio recommendataion system based on user's answers to a set of survey questions to callibrate user's risk appetite and investment goals.
