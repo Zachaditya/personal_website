@@ -20,12 +20,12 @@ export type Project = {
         short:
           "Building a tailored portfolio recommendation system using LLMs to provide personalized investment suggestions based on user risk preferences and market data.",
         overview: `Building a tailored portfolio recommendataion system based on user's answers to a set of survey questions to callibrate user's risk appetite and investment goals.
-        Portfolio recommendations take into account volatility spikes in different markets, institutional a`,
+        Portfolio recommendations take into account volatility spikes in different markets, institutional maturity and returns`,
         highlights: [
-          "Search + filtering UX (category browsing, fast search, filters)",
-          "Product detail pages + similar items (catalog-based recommendations)",
-          "Cart + checkout flow (add/remove/update quantities, responsive UI states)",
-          "AI shopping assistant grounded in catalog context (no hallucinated products)",
+          "Risk survey + onboarding UX (calibrates risk appetite + goals)",
+          "LLM-driven portfolio recommendations (transparent rationale, constraints-aware)",
+          "Market signal inputs (volatility spikes, asset class maturity, returns considerations)",
+          "Full-stack pipeline (Next.js UI → FastAPI endpoints → SQLite persistence)",
         ],
         repoUrl: "https://github.com/Zachaditya/eshop-hm_dataset",
         wip: true,
