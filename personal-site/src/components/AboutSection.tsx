@@ -3,7 +3,7 @@
 
 import { Section } from "./Section";
 
-export function AboutSection({ onBack }: { onBack?: () => void }) {
+export function AboutSection() {
   return (
     <Section id="about" title="About">
       {/* Top row with a button that triggers the slide */}

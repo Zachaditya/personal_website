@@ -5,30 +5,15 @@
   --fg: #0a0a0a;
   --muted: #4b5563;  /* subtle gray for secondary text */
   --border: rgba(0, 0, 0, 0.10);
+  --trail-down: 90px;
+  --trail-right: 800px;
+  --trail-x: 2px;
+  --trail-y: 10px;
+  --trail-thick: 2px;
 }
 
 html, body {
   height: 100%;
-  
-  
-}
-
-body {
-  background: var(--bg);
-  color: var(--fg);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Minimal “techy” details */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 
 ::selection {
@@ -68,13 +53,6 @@ a:hover {
 }
 
 /* ===== TUNABLE DISTANCES ===== */
-:root {
-  --trail-down: 90px;   /* how far down */
-  --trail-right: 800px;  /* how far right */
-  --trail-x: 2px;      /* x position where trail starts */
-  --trail-y: 10px;      /* y position where trail starts */
-  --trail-thick: 2px;   /* line thickness */
-}
 
 /* Container large enough to hold the longer path + label */
 .proj-arrowwrap {

@@ -1,8 +1,6 @@
-import Link from "next/link";
-
 export function LivePill({ href }: { href: string }) {
   return (
-    <Link
+    <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
@@ -11,7 +9,7 @@ export function LivePill({ href }: { href: string }) {
     >
       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
       <span>Live</span>
-    </Link>
+    </a>
   );
 }
 export function WipPill() {

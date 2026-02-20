@@ -29,41 +29,23 @@ export function SummarySection() {
             </p>
 
             <div className="mt-6 flex items-center gap-8">
-              <a
-                href="https://github.com/Zachaditya"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                title="GitHub"
-                className="inline-flex items-center opacity-70 hover:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 rounded"
-              >
-                <Image src="/icons/github.png" alt="" width={40} height={40} />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/zachary-aditya/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                title="LinkedIn"
-                className="inline-flex items-center opacity-70 hover:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 rounded"
-              >
-                <Image
-                  src="/icons/linkedin.png"
-                  alt=""
-                  width={40}
-                  height={40}
-                />
-              </a>
-
-              <a
-                href="mailto:zachaditya@berkeley.edu"
-                aria-label="Email"
-                title="Email"
-                className="inline-flex items-center opacity-70 hover:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 rounded"
-              >
-                <Image src="/icons/email.png" alt="" width={40} height={40} />
-              </a>
+              {[
+                { href: "https://github.com/Zachaditya", label: "GitHub", icon: "/icons/github.png" },
+                { href: "https://www.linkedin.com/in/zachary-aditya/", label: "LinkedIn", icon: "/icons/linkedin.png" },
+                { href: "mailto:zachaditya@berkeley.edu", label: "Email", icon: "/icons/email.png" },
+              ].map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                  aria-label={link.label}
+                  title={link.label}
+                  className="inline-flex items-center opacity-70 hover:opacity-100 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 rounded"
+                >
+                  <Image src={link.icon} alt="" width={40} height={40} />
+                </a>
+              ))}
             </div>
           </div>
 

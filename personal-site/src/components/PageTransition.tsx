@@ -14,6 +14,7 @@ export default function PageTransition({
 
   return (
     <div className="overflow-x-hidden">
+      <Navbar />
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={pathname}
@@ -22,7 +23,6 @@ export default function PageTransition({
           exit={{ x: "-100%" }}
           transition={{ type: "tween", ease: "easeInOut", duration: 0.55 }}
         >
-          <Navbar />
           {children}
         </motion.div>
       </AnimatePresence>

@@ -19,7 +19,7 @@ export type Project = {
         tags: ["AI", "Financial Modelling", "Next.js", "TypeScript", "UI/UX", "FastAPI", "SQLite3"],
         short:
           "Building a tailored portfolio recommendation system using LLMs to provide personalized investment suggestions based on user risk preferences and market data.",
-        overview: `Building a tailored portfolio recommendataion system based on user's answers to a set of survey questions to callibrate user's risk appetite and investment goals.
+        overview: `Building a tailored portfolio recommendation system based on user's answers to a set of survey questions to calibrate user's risk appetite and investment goals.
         Portfolio recommendations take into account volatility spikes in different markets, institutional maturity and returns`,
         highlights: [
           "Risk survey + onboarding UX (calibrates risk appetite + goals)",
@@ -52,7 +52,7 @@ export type Project = {
       },
        {
         slug: "internal-dacs-tool",
-        title: "DACS Risk Managment and Visualization Tool",
+        title: "DACS Risk Management and Visualization Tool",
         date: "August 2025",
         tags: ["Quant", "Risk Analysis", "Financial Modelling", "Python", "Flask","Data Science/Visualization"],
         short:

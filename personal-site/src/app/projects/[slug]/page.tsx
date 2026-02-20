@@ -11,12 +11,9 @@ export default async function ProjectPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params; // <-- unwrap the Promise
+  const { slug } = await params;
 
-  const normalized = decodeURIComponent(slug).trim().toLowerCase();
-  const project = PROJECTS.find(
-    (p) => p.slug.trim().toLowerCase() === normalized
-  );
+  const project = PROJECTS.find((p) => p.slug === slug);
 
   if (!project) return notFound();
 
@@ -61,8 +58,8 @@ export default async function ProjectPage({
           <div className="mt-8 space-y-3">
             <h2 className="text-lg font-semibold">Highlights</h2>
             <ul className="list-disc space-y-2 pl-5 text-sm text-black/70">
-              {project.highlights.map((h) => (
-                <li key={h}>{h}</li>
+              {project.highlights.map((h, i) => (
+                <li key={i}>{h}</li>
               ))}
             </ul>
           </div>
@@ -85,7 +82,7 @@ export default async function ProjectPage({
               href={project.liveUrl}
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-black !no-underline hover:!no-underline transition-colors hover:bg-black hover:!text-white"
+              className="group inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-4 py-2 text-sm font-medium text-black no-underline transition-colors hover:bg-black hover:text-white"
             >
               Live
               <span

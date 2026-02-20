@@ -1,7 +1,6 @@
 "use client";
 import { ProjectsDropdownRow } from "./ProjectsDropdownRow";
 import { Section } from "./Section";
-import Link from "next/link";
 import Image from "next/image";
 import { useLayoutEffect, useRef, useState, useId, useEffect } from "react";
 
@@ -10,32 +9,30 @@ type ResumeItem = {
   org: string;
   dates: string;
   location: string;
-  bullets?: string[] | [" "];
+  bullets?: string[];
 };
-
 const EXPERIENCE: ResumeItem[] = [
   {
-    title: "Full-Stack Engineer / Risk Analyst",
+    title: "Full-Stack Engineer",
     org: "Aetherum.ai",
     dates: "April 2025 - December 2025",
-    location: "San Francisco, CA | Remote",
+    location: "San Francisco, CA",
     bullets: [
-      "Designed and implemented financial models to assess credit-worthiness of users to reduce risk exposure to cryptocurrency market volatility.",
-      "Authored a whitepaper detailing the financial model and its integration with the AI-driven loan underwriting system. [Look in Projects Page]",
-      "Developed React and FastAPI front-end dashboards for real-time visualization of portfolio performance and risk metrics, enhancing user interface and data accessibility.",
-      "Built an internal website enabling the AI team to test and validate the financial model, accelerating development of the loan underwriting AI agent.",
-      "Leveraged Python, PyTorch, Pandas, and Matplotlib for data processing, model development, and visualization tasks.",
+      "Designed and implemented financial models to assess user credit-worthiness, reducing risk exposure to cryptocurrency market volatility.",
+      "Built an internal web app for scenario testing and validation of underwriting models, accelerating iteration speed and model deployment.",
+      "Developed React and FastAPI dashboards for real-time portfolio tracking, achieving 100% beta onboarding and high user retention.",
+      "Leveraged Python, PyTorch, and Pandas to develop data processing pipelines for automated loan underwriting agents.",
     ],
   },
   {
     title: "Research Assistant",
     org: "Spero Studios",
     dates: "October 2022 — December 2022",
-    location: "San Francisco, CA | Remote",
+    location: "San Francisco, CA",
     bullets: [
-      "Analyzed over 20 top-performing arcade games in Southeast Asia to identify recurring trends and user preferences.",
-      "Utilized Google Trends and Twitch Tracker to propose actionable in-game aesthetics, contributing to the team securing 2nd runner-up at the Polygon Development Hackathon out of 100+ competitors.",
-      "Delivered insights that improved project design efficiency by 15%, collaborating with a cross-functional team of developers, designers, and product managers.",
+      "Analyzed 20+ top-performing SEA arcade games using Google Trends and Twitch Tracker to identify market trends and preferences.",
+      "Proposed data-backed aesthetics, securing 3rd place out of 100+ teams at the Polygon Development Hackathon.",
+      "Collaborated cross-functionally to deliver research insights that improved project design efficiency by 15%.",
     ],
   },
   {
@@ -44,36 +41,41 @@ const EXPERIENCE: ResumeItem[] = [
     dates: "September 2022 - May 2023",
     location: "Pleasant Hill, CA",
     bullets: [
-      "Analyzed over 20 top-performing arcade games in Southeast Asia to identify recurring trends and user preferences.",
-      "Utilized Google Trends and Twitch Tracker to propose actionable in-game aesthetics, contributing to the team securing 2nd runner-up at the Polygon Development Hackathon out of 100+ competitors.",
-      "Delivered insights that improved project design efficiency by 15%, collaborating with a cross-functional team of developers, designers, and product managers.",
+      "Tutored 10–20 students weekly in Linear Algebra, Differential Equations, and Multivariable Calculus.",
+      "Collaborated with faculty to support 30+ students in Precalculus, clarifying complex mathematical concepts and logic during lectures.",
+      "Simplified abstract frameworks into digestible strategies, improving student comprehension and exam performance.",
     ],
   },
   {
-    title: "Teaching Assistant",
+    title: "Teaching Intern",
     org: "IFund Education",
     dates: "September 2022 - May 2023",
-    location: "San Francisco, CA",
+    location: "Remote / Indonesia",
     bullets: [
-      "Taught English to a class of 10 Indonesian students from underprivileged rural neighborhoods via Zoom, improving language proficiency and confidence in communication.",
+      "Facilitated virtual English instruction for 10+ students in rural Indonesia, bridging educational gaps through remote learning technology.",
+      "Simplified complex language frameworks into digestible lessons, tailoring delivery to diverse proficiency levels and cultural contexts.",
+      "Optimized student engagement and communication confidence by implementing interactive, project-based learning modules via Zoom.",
     ],
   },
 ];
 
 const EDUCATION: ResumeItem[] = [
   {
-    title: "B.A. Data Science in Business and Industrial Analytics",
+    title: "B.A. Data Science",
     org: "University of California, Berkeley",
     location: "Berkeley, CA",
     dates: "August 2023 - August 2025",
-    bullets: ["GPA: 3.45/4.0"],
+    bullets: [
+      "Concentration: Business and Industrial Analytics",
+      "GPA: 3.4/4.0",
+    ],
   },
   {
     title: "Applied Mathematics",
     org: "Diablo Valley College",
     location: "Pleasant Hill, CA",
-    dates: "August 2021 -  May 2023",
-    bullets: ["GPA: 3.8/4.0"],
+    dates: "August 2021 - May 2023",
+    bullets: ["GPA: 3.9/4.0"],
   },
 ];
 
@@ -84,9 +86,9 @@ const Extracurricular: ResumeItem[] = [
     dates: "September 2022 - May 2023",
     location: "Pleasant Hill, CA",
     bullets: [
-      "Co-founded and led a blockchain-focused student organization with ten main team members, growing a community to 200+ followers through strategic social media campaigns and outreach initiatives.",
-      "Spearheaded the planning and execution of a workshop featuring a prominent blockchain startup founder, attracting and engaging over 80 attendees.",
-      "Collaborated with a team to promote blockchain education, foster networking opportunities, and establish the organization as a hub for blockchain enthusiasts on campus.",
+      "Co-founded a blockchain student organization, growing the community to 200+ followers through strategic outreach.",
+      "Spearheaded a workshop featuring a prominent blockchain founder, attracting 80+ attendees.",
+      "Led a team to promote blockchain education and foster networking opportunities for campus enthusiasts.",
     ],
   },
   {
@@ -95,8 +97,8 @@ const Extracurricular: ResumeItem[] = [
     dates: "September 2022 — December 2022",
     location: "Pleasant Hill, CA",
     bullets: [
-      "Directed a team of developers in designing and building an onboarding Android app for Contra Costa College students using Kotlin, enhancing the student onboarding experience.",
-      "Facilitated weekly meetings to track progress, resolve challenges, and ensure timely delivery of project milestones",
+      "Directed a developer team to build an onboarding Android app using Kotlin, enhancing the student entry experience.",
+      "Facilitated weekly meetings to track progress, resolve technical blockers, and ensure milestone delivery.",
     ],
   },
 ];
@@ -193,6 +195,23 @@ function DropdownSection({
     </div>
   );
 }
+function ResumeItemCard({ item }: { item: ResumeItem }) {
+  return (
+    <div className="rounded-2xl border border-black/10 bg-white p-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <div className="text-sm font-semibold text-black">{item.title}</div>
+        <div className="text-xs text-black/70">{item.dates}</div>
+      </div>
+      <div className="mt-1 text-sm text-black/80">{item.org}</div>
+      <ul className="mt-4 space-y-2 text-sm leading-relaxed text-black/75">
+        {item.bullets?.map((b, i) => (
+          <li key={i}>• {b}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function ResumeSection() {
   return (
     <Section
@@ -216,23 +235,7 @@ export function ResumeSection() {
         <DropdownSection title="Education" defaultOpen={false}>
           <div className="grid gap-4">
             {EDUCATION.map((r) => (
-              <div
-                key={r.title}
-                className="rounded-2xl border border-black/10 bg-white p-5"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <div className="text-sm font-semibold text-black">
-                    {r.title}
-                  </div>
-                  <div className="text-xs text-black/70">{r.dates}</div>
-                </div>
-                <div className="mt-1 text-sm text-black/80">{r.org}</div>
-                <ul className="mt-4 space-y-2 text-sm leading-relaxed text-black/75">
-                  {r.bullets?.map((b) => (
-                    <li key={b}>• {b}</li>
-                  ))}
-                </ul>
-              </div>
+              <ResumeItemCard key={r.title} item={r} />
             ))}
           </div>
         </DropdownSection>
@@ -241,47 +244,15 @@ export function ResumeSection() {
         <DropdownSection title="Experience" defaultOpen>
           <div className="grid gap-4">
             {EXPERIENCE.map((r) => (
-              <div
-                key={r.title}
-                className="rounded-2xl border border-black/10 bg-white p-5"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <div className="text-sm font-semibold text-black">
-                    {r.title}
-                  </div>
-                  <div className="text-xs text-black/70">{r.dates}</div>
-                </div>
-                <div className="mt-1 text-sm text-black/80">{r.org}</div>
-                <ul className="mt-4 space-y-2 text-sm leading-relaxed text-black/75">
-                  {r.bullets?.map((b) => (
-                    <li key={b}>• {b}</li>
-                  ))}
-                </ul>
-              </div>
+              <ResumeItemCard key={r.title} item={r} />
             ))}
           </div>
         </DropdownSection>
 
-        <DropdownSection title="Extracurricular Activites" defaultOpen={false}>
+        <DropdownSection title="Extracurricular Activities" defaultOpen={false}>
           <div className="grid gap-4">
-            {EXPERIENCE.map((r) => (
-              <div
-                key={r.title}
-                className="rounded-2xl border border-black/10 bg-white p-5"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <div className="text-sm font-semibold text-black">
-                    {r.title}
-                  </div>
-                  <div className="text-xs text-black/70">{r.dates}</div>
-                </div>
-                <div className="mt-1 text-sm text-black/80">{r.org}</div>
-                <ul className="mt-4 space-y-2 text-sm leading-relaxed text-black/75">
-                  {r.bullets?.map((b) => (
-                    <li key={b}>• {b}</li>
-                  ))}
-                </ul>
-              </div>
+            {Extracurricular.map((r) => (
+              <ResumeItemCard key={r.title} item={r} />
             ))}
           </div>
         </DropdownSection>

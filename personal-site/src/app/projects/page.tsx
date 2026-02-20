@@ -85,8 +85,8 @@ export default function ProjectsPage() {
 
               <div className="mt-4 flex flex-wrap items-center gap-3">
                 <Link
-                  href={`/projects/${encodeURIComponent(p.slug)}`}
-                  className="group inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-black hover:!text-white hover:!no-underline"
+                  href={`/projects/${p.slug}`}
+                  className="group inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-medium text-black no-underline transition-colors hover:bg-black hover:text-white"
                 >
                   Read more
                   <span
